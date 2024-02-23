@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top mb-5">
     <div class="container-fluid px-4">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        {{-- <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
-        </a>
+        </a> --}}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -13,14 +13,15 @@
             <ul class="navbar-nav me-auto">
                 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Início</a>
+                    {{-- <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Início</a> --}}
+                    <a class="nav-link {{ request()->routeIs('localidades.*') ? 'active' : '' }}" href="{{ route('localidades.index') }}" >Início</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('localidades.*') ? 'active' : '' }}" href="{{ route('localidades.index') }}">Localidades</a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('responsaveis.*') ? 'active' : '' }}" href="{{ route('responsaveis.index') }}">Responsáveis</a>
                 </li>
 
@@ -30,7 +31,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('equipamentos.*') ? 'active' : '' }}" href="{{ route('equipamentos.index') }}">Equipamentos</a>
-                </li>
+                </li> --}}
 
                 {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a>
