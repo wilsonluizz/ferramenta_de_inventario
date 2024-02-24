@@ -195,6 +195,9 @@ class InventarioSeeder extends Seeder
             'titulo'            =>  'Unidade Núcleo-SP',
         ]);
 
+        LocalidadeTipo::create([
+            'titulo'            =>  'Unidade Núcleo-RJ',
+        ]);
 
         LocalidadeTipo::create([
             'titulo'            =>  'Unidade Núcleo-MG',
