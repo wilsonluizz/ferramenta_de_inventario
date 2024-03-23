@@ -42,7 +42,7 @@ class Equipamento extends Model
     }
 
     public function notaFiscal(){
-        return $this->belongsTo('App\Models\NotaFiscal', 'nota_fiscal_id');
+        return $this->belongsTo('App\Models\NotaFiscal', 'nota_fiphscal_id');
     }
 
     public function responsavel(){

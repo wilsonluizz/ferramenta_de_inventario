@@ -33,7 +33,7 @@
                                 </li>
                             </ul>
                             
-                            <button onclick="javascript:history.back(-1) " type="button" class="btn btn-info mt-3" title="Voltar"><i class="bi bi-reply-fill"></i></button>
+                            <button  type="button" class="btn btn-info mt-3" title="Voltar"><a class="nav-link {{ request()->routeIs('localidades.*') ? 'active' : '' }}" href="{{ route('localidades.index') }}" ><i class="bi bi-reply-fill"></i></a></button>
                         </div>
                     </div>
                 </div>

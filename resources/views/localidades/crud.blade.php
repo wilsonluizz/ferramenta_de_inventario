@@ -82,22 +82,14 @@
 
                         {{-- Primeira linha --}}
                         <div class="row pb-3">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <x-utils.formidable.text-input :metodo="$metodo" :objeto="$localidade" identificador="titulo" label="Identificador (Nome único)" dica="Campo obrigatório" />
                             </div>
-                        </div>
-
-                        {{-- Segunda linha --}}
-                        <div class="row pb-3">
                             <div class="col-lg-6">
                                 <x-utils.formidable.select :metodo="$metodo" :objeto="$localidade_tipos" identificador="localidade_tipo_id" label="Tipo de localidade" dica="Campo obrigatório" :selected="(!is_null($localidade) ? $localidade->localidade_tipo_id : null)" />
                             </div>
-                            <div class="col-lg-6">
-                                Select responsável
-                            </div>
                         </div>
                     </div>
-
                 </div>
                 
                 
