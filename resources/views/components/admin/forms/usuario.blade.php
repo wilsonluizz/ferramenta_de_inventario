@@ -245,62 +245,7 @@
         <hr />
     
             {{-- Centros de custo --}}
-            <div class="row">
-    
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3">
-                    <h5>Centros de custo</h5>
-                    <p class="text-secondary">
-                        <span class="badge bg-danger me-1">Atenção</span>
-                        Esse usuário pode acessar as informações dos centros de custo selecionados
-                    </p> 
-                </div>
-                
-                
-                <div class="col-12 col-sm-12 col-md-9 col-lg-9">
-    
-                    <div class="row table-responsive">
-    
-                        <table class="table table-hover align-middle">
-                            <thead>
-                                <tr>
-                                    <th class="col">Centros de custo</th>
-                                    {{-- <th class="col">Ações</th> --}}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if(isset($type))
-                                    @if(count($usuario->centrosDeCustos) > 0)
-                                        @foreach($usuario->centrosDeCustos as $cc)
-                                        <tr>
-                                            {{-- <td>
-                                                <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="checkbox" role="switch" name="perfis[]" value="{{ $p->id }}" id="{{ $p->id }}" 
-                                                        @if($type == 'edit') {{ ($usuario->hasRole($p) ? 'checked="checked"' : "") }} 
-                                                            @if(($usuario->id == 1) && ($p->id == 1)) disabled="disabled" @endif
-                                                        @endif
-                                                    >
-                                                    
-                                                    <label class="form-check-label d-block pe-auto ms-3" for="{{ $p->id }}" role="button">{{ $p->name }}</label>
-                                                </div>
-                                            </td> --}}
-                                            <td>
-                                                {{ $cc->titulo }}
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    @else
-                                        <tr>
-                                            <td>Nenhum centro de custo associado</td>
-                                        </tr>
-                                    @endif
-                                @endif
-    
-                            </tbody>
-                        </table>
-                        
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         {{-- Pé do cartão --}}
