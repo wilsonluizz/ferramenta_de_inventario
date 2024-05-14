@@ -38,7 +38,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function () {
 
     // CONTROLE DA PÁGINA INICIAL (HOME)
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\LocalidadeController::class, 'index'])->name('home');
 });
 
 Route::resource('centros-de-custo', 'App\Http\Controllers\CentroDeCustoController');
