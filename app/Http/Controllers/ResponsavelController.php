@@ -48,8 +48,8 @@ class ResponsavelController extends Controller
             'telefone' => 'required|string',
         ], [],[
             'nome' => 'Nome',
-            'cpf' => 'Matricula',
-            'rg' => 'Matricula',
+            'cpf' => 'CPF',
+            'rg' => 'RG',
             'email' => 'E-mail',
             'telefone' => 'Telefone',
         ]);
@@ -104,18 +104,18 @@ class ResponsavelController extends Controller
     {
         $request->validate([
             'nome' => 'required|string',
-            'matricula' => 'required|integer',
+            'telefone' => 'required|integer',
             'email' => 'required|email',
         ], [],[
             'nome' => 'Nome',
-            'matricula' => 'Matricula',
+            'telefone' => 'telefone',
             'email' => 'E-mail',
         ]);
 
         $responsavel = Responsavel::find($id);
 
         $responsavel->nome = $request->nome;
-        $responsavel->matricula = $request->matricula;
+        $responsavel->telefone = $request->telefone;
         $responsavel->email = $request->email;
         $responsavel->save();
         return redirect()->route('responsaveis.index')->with('info', 'Responsável alterado com sucesso!');
@@ -128,17 +128,11 @@ class ResponsavelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $responsavel = Responsavel::find($id);
-        $centro_custo = CentroDeCusto::where('responsavel_id', $responsavel->id)->get();
+{
+    $responsavel = Responsavel::find($id);
+    $responsavel->delete();
+    
+    return redirect()->route('responsaveis.index')->with('success', 'Responsável excluído com sucesso!');
+}
 
-        if ($centro_custo->count() == 0) {
-            $responsavel->delete();
-            return redirect()->route('responsaveis.index')->with('success', 'Responsável excluído com sucesso!');
-        }
-        return redirect()->route('responsaveis.index')->with('error', 'Responsável não pode ser excluído, pois está em uso no sistema');
-
-        
-        
-    }
 }

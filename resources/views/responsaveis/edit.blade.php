@@ -22,8 +22,8 @@
                                         value="{{ $responsavel->nome }}"" required>
                                 </div>
                                 <div class="col-4 my-2">
-                                    <input type="text"  maxlength="6" name="matricula" class="form-control"
-                                        value="{{ $responsavel->matricula }}" required>
+                                    <input type="text"  maxlength="6" name="telefone" class="form-control"
+                                        value="{{ $responsavel->telefone }}" required>
                                 </div>
                                 <div class="col-4 my-2">
                                     <input type="text   " name="email" class="form-control"

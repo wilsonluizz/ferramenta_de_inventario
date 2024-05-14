@@ -21,7 +21,9 @@ class EquipamentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { $equipamentos = Equipamento::all();
+    {
+        $equipamentos = Equipamento::orderBy('id', 'desc')->get();
+        // dd($equipamentos);
         return view('equipamentos.index', compact('equipamentos'));
     }
 
@@ -31,8 +33,8 @@ class EquipamentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-        
-    {   
+
+    {
         $tipos = Tipo::orderBy('id', 'desc')->get();
         $historicos = Movimentacao::orderBy('id', 'desc')->get();
         $marcas = Marca::orderBy('id', 'desc')->get();
@@ -49,30 +51,31 @@ class EquipamentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {           
-            // dd($request->all());
+    {
+        // dd($request->all());
 
-            $request->validate([
-                'titulo' => 'required',
-                'select_tipo' => 'required',
-                'select_marca' => 'required',
-                'descricao' => 'required',
-                'valor_equipamento' => 'required',
-                'numero_serie' => 'required',
-                'select_cc' => 'required',
-                
-            ], [], [
-            'titulo' => '"Nome"',   
+        $request->validate([
+            'titulo' => 'required',
+            'select_tipo' => 'required',
+            'select_marca' => 'required',
+            'descricao' => 'required',
+            'valor_equipamento' => 'required',
+            'numero_serie' => 'required',
+            'select_cc' => 'required',
+
+        ], [], [
+            'titulo' => '"Nome"',
             'select_tipo' => '"Tipo"',
             'select_marca' => '"Marca"',
             'numero_serie' => '"Numero de série"',
             'select_cc' => '"Centro de custo"',
             'valor_equipamento' => '"Valor"',
-            'select_nota_fiscal' => '"Numero de nota fiscal"']);
+            'select_nota_fiscal' => '"Numero de nota fiscal"'
+        ]);
 
-            
 
-            $equipamento = Equipamento::create([
+
+        $equipamento = Equipamento::create([
             'titulo' => ucwords($request->titulo),
             'tipo_id' => $request->select_tipo,
             'marca_id' => $request->select_marca,
@@ -84,15 +87,15 @@ class EquipamentoController extends Controller
             'patrimonio' => $request->patrimonio
         ]);
 
-            $historico = HistoricoEquipamento::create([
-                'atividade_id' => 1,
-                'equipamento_id' => $equipamento->id,
-                'responsavel_id' => \Auth::user()->id
+        $historico = HistoricoEquipamento::create([
+            'atividade_id' => 1,
+            'equipamento_id' => $equipamento->id,
+            'responsavel_id' => \Auth::user()->id
 
 
-            ]);  
+        ]);
 
-        return redirect()->route('equipamentos.index',)->with('success','Equipamento criado com sucesso!');
+        return redirect()->route('equipamentos.index',)->with('success', 'Equipamento criado com sucesso!');
     }
 
     /**
@@ -103,7 +106,7 @@ class EquipamentoController extends Controller
      */
     public function show($id)
     {
-        
+
         $equip = Equipamento::with('movimentacao')->find($id);
         return view('equipamentos.show', compact('equip'));
     }
@@ -115,7 +118,8 @@ class EquipamentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   $equip = Equipamento::find($id);
+    {
+        $equip = Equipamento::find($id);
         $tipos = Tipo::orderBy('id', 'desc')->get();
         $historicos = Movimentacao::orderBy('id', 'desc')->get();
         $marcas = Marca::orderBy('id', 'desc')->get();
@@ -124,8 +128,6 @@ class EquipamentoController extends Controller
         $categorias = Categoria::orderBy('id', 'desc')->get();
 
         return view('equipamentos.edit', compact('equip', 'marcas', 'centro_de_custo', 'notafiscal', 'categorias', 'tipos'));
-
-        
     }
 
     /**
@@ -145,26 +147,26 @@ class EquipamentoController extends Controller
             'valor_equipamento' => 'required',
             'numero_serie' => 'required',
             'select_cc' => 'required',
-            
+
         ], [], [
-        'titulo' => '"Nome"',   
-        'select_tipo' => '"Tipo"',
-        'select_marca' => '"Marca"',
-        'numero_serie' => '"Numero de série"',
-        'select_cc' => '"Centro de custo"',
-        'valor_equipamento' => '"Valor"',
+            'titulo' => '"Nome"',
+            'select_tipo' => '"Tipo"',
+            'select_marca' => '"Marca"',
+            'numero_serie' => '"Numero de série"',
+            'select_cc' => '"Centro de custo"',
+            'valor_equipamento' => '"Valor"',
         ]);
 
         $equipamento = Equipamento::find($id);
-        $equipamento ->titulo = ucwords($request->titulo);
-        $equipamento ->tipo_id = $request->select_tipo;
-        $equipamento ->marca_id = $request->select_marca;
-        $equipamento ->descricao = ucfirst($request->descricao);
-        $equipamento ->valor_equipamento = $request->valor_equipamento;
-        $equipamento ->numero_serie = $request->numero_serie;
-        $equipamento ->centro_de_custo_id = $request->select_cc;
-        $equipamento ->nota_fiscal_id = $request->select_nota_fiscal;
-        $equipamento ->patrimonio = $request->patrimonio;
+        $equipamento->titulo = ucwords($request->titulo);
+        $equipamento->tipo_id = $request->select_tipo;
+        $equipamento->marca_id = $request->select_marca;
+        $equipamento->descricao = ucfirst($request->descricao);
+        $equipamento->valor_equipamento = $request->valor_equipamento;
+        $equipamento->numero_serie = $request->numero_serie;
+        $equipamento->centro_de_custo_id = $request->select_cc;
+        $equipamento->nota_fiscal_id = $request->select_nota_fiscal;
+        $equipamento->patrimonio = $request->patrimonio;
         $equipamento->save();
 
         $historico = HistoricoEquipamento::create([
@@ -176,8 +178,6 @@ class EquipamentoController extends Controller
         ]);
 
         return redirect()->route('equipamentos.index')->with('info', 'Equipamento Editado com sucesso!');
-        
-
     }
 
     /**
@@ -200,4 +200,3 @@ class EquipamentoController extends Controller
         ]);
     }
 }
-

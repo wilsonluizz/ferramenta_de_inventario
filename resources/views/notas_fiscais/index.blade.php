@@ -59,9 +59,9 @@
                                         </button>
                                     @endif
 
-                                    <a class="btn btn-secondary ms-1" type="button" data-bs-toggle="modal" data-bs-target="#editar-{{$nota->id}}" data-toggle="tooltip" title="Editar">
+                                    {{-- <a class="btn btn-secondary ms-1" type="button" data-bs-toggle="modal" data-bs-target="#editar-{{$nota->id}}" data-toggle="tooltip" title="Editar">
                                         <i class="bi bi-pencil-fill"></i>
-                                    </a>
+                                    </a> --}}
 
                                     <a class="btn btn-danger btn-modal ms-1" type="button" data-bs-toggle="modal" data-bs-target="#confirmarExclusao-{{$nota->id}}" data-toggle="tooltip" title="Excluir">
                                         <i class="bi bi-trash-fill"></i>
