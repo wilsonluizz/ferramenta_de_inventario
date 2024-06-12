@@ -61,10 +61,10 @@
                                                 data-toggle="tooltip" title="Editar {{ $equip->titulo }}">
                                                 <i class="bi bi-pencil-fill"></i>
                                             </a>
-                                            <a class="btn btn-primary" href="{{ route('movimentacao.create', $equip->id) }}"
+                                            {{-- <a class="btn btn-primary" href="{{ route('movimentacao.create', $equip->id) }}"
                                                 data-toggle="tooltip" title="Movimentação {{ $equip->titulo }}">
                                                 <i class="bi bi-arrows-move"></i>
-                                            </a>
+                                            </a> --}}
                                         @else
                                             <a class="btn btn-primary" href="{{ route('equipamentos.show', $equip->id) }}"
                                                 data-toggle="tooltip" title="Ver detalhes de {{ $equip->titulo }}">

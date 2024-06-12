@@ -25,7 +25,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="card mt-4">
+                {{-- <div class="card mt-4">
                     <div class="card-header">
                         <h2 class="text-center">Movimentações</h2>
                     </div>
@@ -50,7 +50,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> --}}
                 <button onclick="javascript:history.back(-1) " type="button" class="btn btn-info my-3"><i class="bi bi-reply-fill" title="Voltar"></i></button>
                 <a class="btn  btn-primary my-3" href="{{ route('historicos.index', $equip->id) }}" data-toggle="tooltip" title="Ver histórico">
                     <i class="bi bi-clock-history"></i>
